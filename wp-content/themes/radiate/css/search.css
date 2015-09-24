@@ -1,0 +1,5 @@
+table, td, tr {border: 0px;}
+
+
+.gs-title {text-decoration: none; font-family: Oswald-Light; font-size: 24px; color: #8aaf5d !important}
+	.gs-title>b {color: #8aaf5d !important; font-family: Oswald-Bold}

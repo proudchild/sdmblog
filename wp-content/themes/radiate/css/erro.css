@@ -1,0 +1,21 @@
+.error-image{margin-bottom: 40px;margin-top: 20px;width: 140px;height: 170px; display: inline-block;}
+.error-title{font-family: Oswald-Regular; font-size: 36px; color: #00314c ;display: inline-block; vertical-align: middle;}
+.error-invite{margin-left: 20px; margin-bottom: 100px;font-family: OpenSans-Light; font-size: 18px; color: #797979;}
+.error-categories{padding: 25px; max-width: 1000px}
+	.error-categories>.item {display: inline-block;width: 33%;float: left;margin-bottom: 15px;}
+		.error-categories>.item>img{width: 35px;height: 35px;display: inline-block;}
+		.error-categories>.item>h1{color: #00B7AD;display: inline-block;font-family: Oswald-Regular;font-size: 15px;vertical-align: middle;margin: 0px;padding: 0px;margin-left:30px;}
+			.error-categories>.item>h1>a{color: #00B7AD;margin: 0px;text-decoration: none; font-family: Oswald-Light; font-size: 24px}
+
+			@media(max-width:990px){
+				.error-categories>.item>h1>a{font-size: 1.5em}
+
+			}
+
+			@media(max-width:700px){
+				.error-categories>.item>h1>a{font-size: 0.9em}
+				.error-categories>.item>img{width: 20px;height: 20px;display: inline-block;}
+				.error-categories>.item>h1{margin-left:1px;}
+				.error-invite{margin-bottom: 50px;}
+
+			}

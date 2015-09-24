@@ -1,0 +1,13 @@
+
+#main>article>header>h1{font-family: Oswald-Regular; font-size: 36px; color: #00304b; text-transform: uppercase;}
+article{padding: 0px !important; margin:0px;}
+#main>ul{padding: 0px; margin: 0px; padding-bottom: 100px; border: 1px solid #797979;}
+#main>ul>li{background-color: #fafafa; padding-left: 20px; padding-right: 20px; padding-top: 45px; }
+#main>ul>li>.section-author{padding-bottom: 25px}
+#main>ul>li>.section-author>.author-name{font-family: Oswald-Regular; font-size: 16px; color: #00304b;}
+#main>ul>li>.section-author>span{font-family: Oswald-Light; font-size: 16px; color: #787878;}
+#main>ul>li>.section-author>.post-title{font-family: Oswald-Regular; font-size: 16px; color: #787878;}
+#main>ul>li>.section-author>.comment-date{font-family: Oswald-Light; font-size: 16px; color: #787878;}
+#main>ul>li>.section-comment-content{padding-bottom: 40px; width: 100%; border-bottom: 1px solid #1bc19a}
+#main>ul>li>.section-comment-content>p{font-family: OpenSans-Light; font-size: 15px; color: #000000; max-width: 80%;}
+.hfeed>.site-content>.inner-wrap{padding-top: 45px !important}
