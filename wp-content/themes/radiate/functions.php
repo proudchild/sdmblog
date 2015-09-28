@@ -338,6 +338,104 @@ function radiate_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'radiate_scripts' );
 
+function wingsAjaxLoadPost(){
+	$page = $_POST['page'];
+	$take = $_POST['take'];
+
+
+	$query = new WP_Query(array ('paged' => $page, 'posts_per_page' => $take ));
+
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			get_template_part( 'content-sdm', get_post_format() );
+		}
+	} else {
+	// no posts found
+	}
+
+
+}
+add_action( 'wp_ajax_nopriv_wings-ajax-load-post', 'wingsAjaxLoadPost' );
+add_action( 'wp_ajax_wings-ajax-load-post', 'wingsAjaxLoadPost' );
+
+
+function winsAjaxLoadCards(){
+	$page = $_POST['page'];
+	$take = $_POST['take'];
+
+
+	$query = new WP_Query(array ('paged' => $page, 'posts_per_page' => $take ));
+
+	if ( $query->have_posts() ) {
+
+
+			//aqui começa
+		$i=0; while ( $query->have_posts() ) : the_post(); 
+
+		$i++;
+		if($i == 3){ echo "</ul><ul class='list-two'>";}
+
+		if ($i == 5){ 
+
+
+			echo "<li class='post-mais-acessados'>";
+
+			echo "<h1>mais lidos</h1>";
+						//pvc_most_viewed_posts();
+
+			echo "</li>";
+
+		}
+
+		if($i == 5){ echo "</ul><ul class='list-three'>";}
+		if ($i == 5){ 
+
+
+			echo "<li class='post-mais-comentados'>";
+			echo "<h1>mais comentados</h1>";
+			echo "<ul>";
+			foreach (popularPosts(5) as $key => $p) {
+				$urlPost = get_permalink($p->ID);
+				$number = ($key +1);
+				if(strlen($p->post_title)<=35)
+					echo "<li><a href={$urlPost}>". "<span class='number'>".$number."</span>".  "<span class='title'>".$p->post_title ."</span></a></li>";
+				else
+					echo "<li><a href={$urlPost}>". "<span class='number'>".$number."</span>".  "<span class='title'>".substr($p->post_title, 0, 35) ."...</span></a></li>";
+
+			}
+			echo "</ul>";
+			echo "</li>";
+
+
+		}
+
+		if($i == 7){ echo "</ul><ul class='list-four'>";}
+		if($i == 8){ echo "</ul><ul class='list-three-col'>";}
+		echo "<li>";
+
+
+
+		get_template_part( 'content-sdm-card', get_post_format() );
+
+
+
+		echo "</li>";
+
+
+		endwhile;
+			//aqui termina
+
+	}
+	else {
+	// no posts found
+	}
+
+
+}
+add_action( 'wp_ajax_nopriv_wings-ajax-load-cards', 'wingsAjaxLoadPost' );
+add_action( 'wp_ajax_wings-ajax-load-cards', 'wingsAjaxLoadPost' );
+
 function wingsAjaxSignin(){
 	session_start();
 	if(isset($_POST['username']) && isset($_POST['password'])){
@@ -378,7 +476,7 @@ function wingsLoginWithTwitter(){
 	session_start();
 	$CONSUMER_KEY='C43hbf8KOd1ZKyfNHL8yE95yg';
 	$CONSUMER_SECRET='B18J2Pmc7Dg7dGZ5CnkXOjjxatXO6HdJIHlvGOHYIiCMP77uJC';
-	$OAUTH_CALLBACK='http://localhost/sdm/trunk/saindodamatrix/wp-twitter-login.php?wingscallbackurl='.$_POST['callbackurl'];
+	$OAUTH_CALLBACK='http://localhost/saindodamatrix/wp-twitter-login.php?wingscallbackurl='.$_POST['callbackurl'];
 	
 	$json = array();
 	$connection = new TwitterOAuth($CONSUMER_KEY, $CONSUMER_SECRET);
